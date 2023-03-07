@@ -43,7 +43,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/ppQFC3L.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-To begin this lab, I first created a Domain Controller Virtual Machine using (Windows Server 2022) and named it "DC-1". Next, I set up the Domain Controllers NIC Private IP Adress to be "static". After that, I created a Client Virtual Machine using (Windows 10) and named it "Client-1". I used the same Resource Group and VNET that I used while creating "DC-1". Lastly, I checked the topology using Network Watcher inside of Microsoft Azure.
+To begin this lab, I first created a Domain Controller Virtual Machine using (Windows Server 2022) and named it "DC-1". Next, I set up the Domain Controllers NIC Private IP Address as "static." After that, I created a Client Virtual Machine using (Windows 10) and named it "Client-1". I used the same Resource Group and VNET that I used while creating "DC-1". Lastly, I checked the topology using Network Watcher inside Microsoft Azure.
 </p>
 <br />
 
@@ -56,7 +56,7 @@ To begin this lab, I first created a Domain Controller Virtual Machine using (Wi
 </p>
 <p>
 
-Next, I wanted to ensure connectivity between DC-1 and Client-1. I did that by using Remote Desktop and logged into Client-1 first. Then while in Client-1's Remote Desktop, I pinnged DC-1's Private IP Address with the command "ping -t<ip address> (perpetual ping). After confirming that there was no connection between the 2, I logged into DC-1, also using Remote Desktop and enabled ICMPv4 on the local windows firewall. The final step was for me to go back into Client-1's Remote Desktop and attempt to ping DC-1 again and once I did that this time, it showed that it had succeded.
+Next, I wanted to ensure connectivity between DC-1 and Client-1. I did that by using Remote Desktop and logging into Client-1 first. Then while in Client-1's Remote Desktop, I pinged DC-1's Private IP Address with the command "ping -t<ip address> (perpetual ping). After confirming that there was no connection between the 2, I logged into DC-1, also using Remote Desktop and enabled ICMPv4 on the local windows firewall. The final step was for me to go back into Client-1's Remote Desktop and attempt to ping DC-1 again, and once I did that this time, it showed that it had succeeded.
 </p>
 <br />
 
@@ -73,7 +73,7 @@ Next, I wanted to ensure connectivity between DC-1 and Client-1. I did that by u
 </p>
 <p>
 
-In this part of the lab, I installed Active Directory.  I did that by logging back into DC-1 Remote Desktop and installed Active Directory Domain Services. Moving forward I had to promote as a DC by setting up a new forest and naming it "mydomain.com". The last step I did was log out of Dc-1's Remote Desktop and log back into it as "mydomain.com\labuser".
+In this part of the lab, I installed Active Directory.  I did that by logging back into DC-1 Remote Desktop and installed Active Directory Domain Services. Moving forward, I had to promote as a DC by setting up a new forest and naming it "mydomain.com." My last step was to log out of DC-1's Remote Desktop and log back into it as "mydomain.com\labuser".
 </p>
 <br />
 
@@ -98,7 +98,7 @@ In this part of the lab, I installed Active Directory.  I did that by logging ba
 </p>
 <p>
 
-At this point in the lab, I had to create an Admin and Normal User account in AD. First, I went to Active Directory Users and Computers(ADUC), and while in here I created an Organizational Unit(OU) called "_EMPLOYEES". After that I created another OU and named this one "_ADMINS". Next I created a new employee named "Jane Doe" with the username "jane_admin" and added that employee to the "Domain Admins" security group. Moving on, the last step I did was log back out of DC-1's Remote Desktop and log back into it as "mydomain.com\jane_admin".
+At this point in the lab, I had to create an Admin and Normal User account in AD. First, I went to Active Directory Users and Computers(ADUC), and while there I made an Organizational Unit(OU) called "_EMPLOYEES." After that, I made another OU and named this one "_ADMINS." Next, I created a new employee named "Jane Doe" with the username "jane_admin" and added that employee to the "Domain Admins" security group. Moving on, the last step I did was log back out of DC-1's Remote Desktop and log back into it as "mydomain.com\jane_admin".
 </p>
 <br />
 
@@ -119,7 +119,7 @@ At this point in the lab, I had to create an Admin and Normal User account in AD
 </p>
 <p>
 
-Part 5 of this lab, I joined Client-1 to my domain(mydomain.com). I had to first set Client-1's DNS settings to the DC Private IP Address inside of Microsoft Azure. Once I did that, I logged out of Client-1's Remote Desktop and logged back into as the original local admin (labuser) and joined it to the domain. Next, I went back into DC-1's Remote Desktop and verified that Client-1 now showed up in Active Directory Users and Computers (ADUC) "Computers" container on the root of the domain.
+In part 5 of this lab, I joined Client-1 to my domain(mydomain.com). I had to first set Client-1's DNS settings to the DC Private IP Address inside of Microsoft Azure. Once I did that, I logged out of Client-1's Remote Desktop, logged back into as the original local admin (labuser), and joined it to the domain. Next, I went back into DC-1's Remote Desktop and verified that Client-1 now appeared in the Active Directory Users and Computers (ADUC) "Computers" container on the root of the domain.
 </p>
 <br />
 
@@ -140,6 +140,6 @@ Part 5 of this lab, I joined Client-1 to my domain(mydomain.com). I had to first
 </p>
 <p>
 
-In the fianl part of this lab, I created 1000's of additional users and attempted to log into Client-1's Remote Desktop with one of the new users I had created. I did his by first logging back into DC-1's Remote Desktop as jane_admin and opened "Powershell_ise" as an administrator. After doing that I created a "New File" and pasted the contents of a "script" into Powershell_ise. Inside Powershell_ise, I ran the script and observed the 1000's of accounts being created. Lastly, I opened ADUC and observed all of the new accounts in the appropiate OU. Next, I took one of the random new accounts information and logged into Client-1's Remote Desktop and successfully logged in with the random accounts credentials. 
+In the final part of this lab, I created thousands of additional users and attempted to log into Client-1's Remote Desktop with one of the new users I had made. I did this by logging back into DC-1's Remote Desktop as jane_admin and opening "Powershell_ise" as an administrator. After doing that, I made a "New File" and pasted the contents of a "script" into Powershell_ise. Inside Powershell_ise, I ran the script and observed the thousands of accounts being created. Lastly, I opened ADUC and observed all of the new accounts in the appropriate OU. Next, I took one of the random new accounts' information, logged into Client-1's Remote Desktop, and successfully logged in with the random accounts credentials. 
 </p>
 <br />
